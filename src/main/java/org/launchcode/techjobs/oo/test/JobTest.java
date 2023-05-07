@@ -16,8 +16,7 @@ public class JobTest {
     @Test
     public void testSettingJobId() {
         Job job1 = new Job();
-        Job job2 = new Job();
-//        System.out.println("Job1: " + job1.getId() + ", Job2: " + job2.getId());
+        Job job2 = new Job();git
         assertNotEquals(job1.getId(), job2.getId());
     }
 
