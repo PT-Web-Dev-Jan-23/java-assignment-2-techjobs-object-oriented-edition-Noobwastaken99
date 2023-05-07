@@ -35,27 +35,27 @@ public class Job {
     //  match.
     @Override
     public String toString() {
-        if ((this.name == null || this.name == "") && this.employer.getValue() == null
-                && this.location.getValue() == null && this.positionType.getValue() == null
-                && this.coreCompetency.getValue() == null) {
+        if ((this.name == null || this.name == "") && (this.employer.getValue() == null || this.employer.getValue() == "")
+                && (this.location.getValue() == null || this.location.getValue() == "") && (this.positionType.getValue() == null || this.positionType.getValue() == "")
+                && (this.coreCompetency.getValue() == null || this.coreCompetency.getValue() == "")) {
             return "OOPS! This job does not seem to exist.";
         }
         if (this.name == null || this.name == "") {
             this.name = "Data not available";
         }
-        if (this.employer.getValue() == null) {
+        if (this.employer.getValue() == null || this.employer.getValue() == "") {
             this.employer.setValue("Data not available");
         }
-        if (this.location.getValue() == null) {
+        if (this.location.getValue() == null || this.location.getValue() == "") {
             this.location.setValue("Data not available");
         }
-        if (this.positionType.getValue() == null) {
+        if (this.positionType.getValue() == null || this.positionType.getValue() == "") {
             this.positionType.setValue("Data not available");
         }
-        if (this.coreCompetency.getValue() == null) {
+        if (this.coreCompetency.getValue() == null || this.coreCompetency.getValue() == "") {
             this.coreCompetency.setValue("Data not available");
         }
-        return "\nID:  " + id +
+        return "\nID: " + id +
                 "\nName: " + name +
                 "\nEmployer: " + employer +
                 "\nLocation: " + location +

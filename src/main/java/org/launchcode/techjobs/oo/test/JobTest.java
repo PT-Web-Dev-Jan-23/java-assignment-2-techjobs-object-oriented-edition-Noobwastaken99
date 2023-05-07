@@ -61,19 +61,23 @@ public class JobTest {
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
         Job job2 = new Job("", new Employer(), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency());
-        Job job3 = new Job("",new Employer(), new Location(), new PositionType(), new CoreCompetency());
-        assertEquals(job1.toString(), "\nID:  " +job1.getId()+ "\n" +
+        assertEquals(job1.toString(), "\nID: " +job1.getId()+ "\n" +
                 "Name: Product tester\n" +
                 "Employer: ACME\n" +
                 "Location: Desert\n" +
                 "Position Type: Quality control\n" +
                 "Core Competency: Persistence\n");
-        assertEquals(job2.toString(), "\nID:  " +job2.getId()+ "\n" +
+        assertEquals(job2.toString(), "\nID: " +job2.getId()+ "\n" +
                 "Name: Data not available\n" +
                 "Employer: Data not available\n" +
                 "Location: Desert\n" +
                 "Position Type: Quality control\n" +
                 "Core Competency: Data not available\n");
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job job3 = new Job("",new Employer(), new Location(), new PositionType(), new CoreCompetency());
         assertEquals(job3.toString(), "OOPS! This job does not seem to exist.");
     }
 
