@@ -45,4 +45,36 @@ public class JobTest {
         assertFalse(job1.equals(job2));
     }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        char firstChar = job.toString().charAt(0);
+        char lastChar = job.toString().charAt(job.toString().length()-1);
+        assertEquals(firstChar, '\n');
+        assertEquals(lastChar, '\n');
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job job1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job2 = new Job("", new Employer(), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency());
+        Job job3 = new Job("",new Employer(), new Location(), new PositionType(), new CoreCompetency());
+        assertEquals(job1.toString(), "\nID:  1\n" +
+                "Name: Product tester\n" +
+                "Employer: ACME\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Persistence\n");
+        assertEquals(job2.toString(), "\nID:  2\n" +
+                "Name: Data not available\n" +
+                "Employer: Data not available\n" +
+                "Location: Desert\n" +
+                "Position Type: Quality control\n" +
+                "Core Competency: Data not available\n");
+        assertEquals(job3.toString(), "OOPS! This job does not seem to exist.");
+    }
+
 }
